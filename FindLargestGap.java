@@ -62,7 +62,7 @@ public class FindLargestGap {
 
     private static int partition(int[] elements, int pivot, int high) {
         int gtPtr = pivot;
-        int pivotElement = elements[high];
+        final int pivotElement = elements[high];
         while(gtPtr < high) {
             if(elements[gtPtr] < pivotElement) {
                 int temp = elements[gtPtr];
