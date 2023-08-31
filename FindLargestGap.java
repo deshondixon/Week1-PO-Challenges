@@ -2,28 +2,12 @@ import java.util.*;
 
 public class FindLargestGap {
     public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        String input;
-        int size;
-        int[] elements;
-        while(true) {
-            System.out.println("enter array size (empty to exit): ");
-            input = sc.nextLine();
-            if(input.equals("")) break;
-            size = Integer.parseInt(input);
-            elements = new int[size];
-            System.out.println("enter array values: ");
-            for(int i = 0; i < size; i++) {
-                elements[i] = sc.nextInt();
-            }
-            sc.nextLine();
-            System.out.print('\n');
-            int[] results = findLargestGap(elements);
-            System.out.println("Sorted array: " + Arrays.toString(elements));
-            System.out.println("Largest gap between " + results[0] + " and " + results[1] +
-            " is " + results[2] + '\n');
-        }
-        sc.close();
+        int[] elements = {5, 10, 2, 8, 1, 6};
+//        int[] elements = {20, 15, 25, 30, 35, 40};
+
+        int[] results = findLargestGap(elements);
+        System.out.println("Largest gap between " + results[0] + " and " + results[1] +
+                " is " + results[2]);
     }
 
     public static int[] findLargestGap(int[] elements) {
@@ -48,14 +32,9 @@ public class FindLargestGap {
         return results;
     }
 
-    // could probably handle duplicates better but it works
     private static void quickSort(int[] elements, int low, int high) {
         if(low >= high) return;
         int pivot = partition(elements, low, high);
-        /*System.out.println("partitioned: " + Arrays.toString(elements));
-        System.out.println("pivot: " + pivot);
-        System.out.println("low: " + low);
-        System.out.println("high: " + high);*/
         quickSort(elements, low, pivot-1);
         quickSort(elements, pivot+1, high);
     }
